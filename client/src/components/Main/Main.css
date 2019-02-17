@@ -2,14 +2,11 @@
   padding: 10% 15% 5% 15%;
 }
 
-.head {
-  /* display: block; */
-}
-
 h1 {
   font-size: 48px;
   color: #ffa03c;
   letter-spacing: 2px;
+  font-weight: 800;
 }
 
 .search-form {
@@ -30,8 +27,7 @@ h1 {
   color: white;
   font: inherit;
   background: #ffa03c;
-  width: 10%;
-
+  width: 6rem;
   border: 1px solid #ffa03c;
   box-shadow: 1px 6px 10px rgba(0, 0, 0, 0.5);
 }
@@ -40,5 +36,6 @@ label {
   display: block;
   color: burlywood;
   padding-top: 5px;
-  font-size: 24px;
+  font-size: 20px;
+  font-weight: 300;
 }
