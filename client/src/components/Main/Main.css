@@ -39,3 +39,27 @@ label {
   font-size: 20px;
   font-weight: 300;
 }
+
+.output__test {
+  margin: 0;
+  padding: 1rem;
+  height: 3.5rem;
+  justify-content: center;
+  background: rgb(129, 130, 206);
+}
+
+.output__success {
+  margin: 0;
+  padding: 1rem;
+  height: 1.5rem;
+  justify-content: center;
+  background: rgb(177, 136, 83);
+}
+
+.output__error {
+  margin: 0;
+  padding: 1rem;
+  height: 1.5rem;
+  justify-content: center;
+  background: rgb(177, 83, 83);
+}
