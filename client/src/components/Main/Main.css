@@ -12,6 +12,8 @@ h1 {
 .search-form {
   display: flex;
   justify-content: center;
+  /* border: 3px solid #ffa03c; */
+  box-shadow: 1px 6px 10px rgba(0, 0, 0, 0.5);
 }
 
 .input {
@@ -19,8 +21,7 @@ h1 {
   background: #fff;
   color: #461c1c;
   height: 2.5rem;
-  border: 1px solid #ffa03c;
-  box-shadow: 1px 6px 10px rgba(0, 0, 0, 0.5);
+  border: 3px solid #ffa03c;
 }
 
 #btn {
@@ -28,8 +29,7 @@ h1 {
   font: inherit;
   background: #ffa03c;
   width: 6rem;
-  border: 1px solid #ffa03c;
-  box-shadow: 1px 6px 10px rgba(0, 0, 0, 0.5);
+  border: 3px solid #ffa03c;
 }
 
 label {
@@ -40,12 +40,22 @@ label {
   font-weight: 300;
 }
 
+.output__loading {
+  margin: 0;
+  padding: 1rem;
+  height: 3.5rem;
+  justify-content: center;
+  background: rgb(75, 75, 114);
+  box-shadow: 1px 6px 10px rgba(0, 0, 0, 0.5);
+}
+
 .output__test {
   margin: 0;
   padding: 1rem;
   height: 3.5rem;
   justify-content: center;
   background: rgb(129, 130, 206);
+  box-shadow: 1px 6px 10px rgba(0, 0, 0, 0.5);
 }
 
 .output__success {
@@ -54,6 +64,7 @@ label {
   height: 1.5rem;
   justify-content: center;
   background: rgb(177, 136, 83);
+  box-shadow: 1px 6px 10px rgba(0, 0, 0, 0.5);
 }
 
 .output__error {
@@ -62,4 +73,5 @@ label {
   height: 1.5rem;
   justify-content: center;
   background: rgb(177, 83, 83);
+  box-shadow: 1px 6px 10px rgba(0, 0, 0, 0.5);
 }

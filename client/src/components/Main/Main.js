@@ -1,18 +1,15 @@
-import React, { Component } from "react";
-// import { exec } from "child_process";
+import React, { Component } from 'react';
 
-// import jimmy from "../../curl.sh"
-
-import "./Main.css";
+import './Main.css';
 
 class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      curlOutput: "",
-      curlThis: "",
-      output: "",
-      cn: "banana"
+      curlOutput: '',
+      curlThis: '',
+      output: '',
+      cn: ''
     };
 
     this.onChange = this.onChange.bind(this);
@@ -28,36 +25,42 @@ class Main extends Component {
   // }
 
   fetchCurl = curlThis => {
-    fetch("http://localhost:5002/curl")
+    const options = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ curlThis })
+    };
+
+    fetch('http://localhost:5002/curl', options)
       .then(res => res.json())
       .then(json => {
-        this.setState({ cn: "output__test", curlOutput: json.output });
-
-        // if (json.output === "22") {
-        //   this.setState({
-        //     cn: "output__error",
-        //     curlOutput: "Yup, it's dead. Error: 502 Bad Gateway"
-        //   });
-        // } else if (json.output === "1)") {
-        //   this.setState({
-        //     cn: "output__error",
-        //     curlOutput: "This is not a valid URL"
-        //   });
-        // } else if (json.output === "6)") {
-        //   this.setState({
-        //     cn: "output__error",
-        //     curlOutput: "Yup, it's dead. Error: Could not resolve host"
-        //   });
-        // } else if (json.output === "7)") {
-        //   this.setState({
-        //     cn: "output__error",
-        //     curlOutput: "Failed to connect. Are you even online?"
-        //   });
-        // } else {
-        //   this.setState({ cn: "output__success", curlOutput: json.output });
-        // }
+        this.setState({ cn: 'output__test', curlOutput: json.output });
       })
-      .catch(error => console.log("error: ", error));
+      .catch(err => console.log('Error: ', err));
+
+    // if (json.output === "22") {
+    //   this.setState({
+    //     cn: "output__error",
+    //     curlOutput: "Yup, it's dead. Error: 502 Bad Gateway"
+    //   });
+    // } else if (json.output === "1)") {
+    //   this.setState({
+    //     cn: "output__error",
+    //     curlOutput: "This is not a valid URL"
+    //   });
+    // } else if (json.output === "6)") {
+    //   this.setState({
+    //     cn: "output__error",
+    //     curlOutput: "Yup, it's dead. Error: Could not resolve host"
+    //   });
+    // } else if (json.output === "7)") {
+    //   this.setState({
+    //     cn: "output__error",
+    //     curlOutput: "Failed to connect. Are you even online?"
+    //   });
+    // } else {
+    //   this.setState({ cn: "output__success", curlOutput: json.output });
+    // }
   };
 
   onChange(e) {
@@ -66,7 +69,13 @@ class Main extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    this.fetchCurl();
+    this.setState({
+      cn: 'output__loading',
+      curlOutput: 'Checking ' + this.state.curlThis
+    });
+    console.log('curlOutput:', this.state.curlThis);
+    // const curlThis = this.state.curlThis;
+    this.fetchCurl(this.state.curlThis);
   }
 
   render() {
@@ -84,12 +93,11 @@ class Main extends Component {
             onChange={this.onChange}
           />
           <button className="submit" id="btn">
-            Submit
+            Check
           </button>
         </form>
 
         <h3 className={this.state.cn}>{this.state.curlOutput}</h3>
-
         <label>
           Check to see whether a website is working by pasting its URL!
         </label>
