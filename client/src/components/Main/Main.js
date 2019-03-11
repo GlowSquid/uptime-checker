@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import './Main.css';
+import "./Main.css";
 
 class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      curlOutput: '',
-      curlThis: '',
-      cn: ''
+      curlOutput: "",
+      curlThis: "",
+      cn: ""
     };
 
     this.onChange = this.onChange.bind(this);
@@ -25,75 +25,91 @@ class Main extends Component {
 
   fetchCurl = curlThis => {
     const options = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ curlThis })
     };
 
-    fetch('http://localhost:5002/curl', options)
+    fetch("http://localhost:5002/curl", options)
       .then(res => res.json())
       .then(json => {
-        if (json.output === 'alive') {
+        if (json.output === "alive") {
           this.setState({
-            cn: 'output__success',
+            cn: "output__success",
             curlOutput: "It's still alive!"
           });
-        } else if (json.output === '') {
+        } else if (json.output === "22403") {
           this.setState({
-            cn: 'output__loading',
-            curlOutput: 'Please enter any URL or IP'
-          });
-        } else if (json.output === '22403') {
-          this.setState({
-            cn: 'output__error',
+            cn: "output__error",
             curlOutput: "It's alive, but forbidden. Error: 403"
           });
-        } else if (json.output === '22404') {
+        } else if (json.output === "22404") {
           this.setState({
-            cn: 'output__error',
+            cn: "output__error",
             curlOutput: "Yup, it's dead. Error: 404 Not Found"
           });
-        } else if (json.output === '22502') {
+        } else if (json.output === "22406") {
           this.setState({
-            cn: 'output__error',
+            cn: "output__error",
+            curlOutput: "Yup, it's dead. Error: 406 Not Acceptable"
+          });
+        } else if (json.output === "22502") {
+          this.setState({
+            cn: "output__error",
             curlOutput: "Yup, it's dead. Error: 502 Bad Gateway"
           });
         } else if (
-          json.output === '1' ||
-          json.output === '3' ||
-          json.output === '00' ||
-          json.output === '01'
+          json.output === "1" ||
+          json.output === "3" ||
+          json.output === "01"
         ) {
           this.setState({
-            cn: 'output__error',
-            curlOutput: 'This is not a valid URL.'
+            cn: "output__error",
+            curlOutput: "This is not a valid URL."
           });
-        } else if (json.output === '3') {
+        } else if (json.output === "3") {
           this.setState({
-            cn: 'output__error',
-            curlOutput: 'This is not a valid URL.'
+            cn: "output__error",
+            curlOutput: "This is not a valid URL."
           });
-        } else if (json.output === '6') {
+        } else if (json.output === "6") {
           this.setState({
-            cn: 'output__error',
+            cn: "output__error",
             curlOutput:
               "Yup, it's pretty dead alright. Error: Could not resolve host"
           });
-        } else if (json.output === '7') {
+        } else if (json.output === "7") {
           this.setState({
-            cn: 'output__error',
-            curlOutput: 'Failed to connect. Are you even online?'
+            cn: "output__error",
+            curlOutput: "Failed to connect. Are you even online?"
+          });
+        } else if (json.output === "780") {
+          this.setState({
+            cn: "output__error",
+            curlOutput:
+              "Failed to connect. Error: Connection refused on port 80"
+          });
+        } else if (json.output === "7443") {
+          this.setState({
+            cn: "output__error",
+            curlOutput:
+              "Failed to connect. Error: Connection refused on port 443"
+          });
+        } else if (json.output === "60") {
+          this.setState({
+            cn: "output__error",
+            curlOutput: "This site seems to use an invalid SSL-certificate"
           });
         } else {
-          this.setState({ cn: 'output__test', curlOutput: json.output });
+          this.setState({ cn: "output__info", curlOutput: json.output });
         }
       })
       .catch(err => {
-        console.log('error', err);
+        console.log("error", err);
         this.setState({
-          cn: 'output__error',
+          cn: "output__error",
           curlOutput:
-            'Sorry! We appear to be having internal server issues. Please try your query again later.'
+            "Sorry! We appear to be having internal server issues. Please try your query again later."
         });
       });
   };
@@ -105,10 +121,10 @@ class Main extends Component {
   onSubmit(e) {
     e.preventDefault();
     this.setState({
-      cn: 'output__loading',
-      curlOutput: 'Checking ' + this.state.curlThis
+      cn: "output__loading",
+      curlOutput: "Checking " + this.state.curlThis
     });
-    console.log('curlOutput:', this.state.curlThis);
+    console.log("curlOutput:", this.state.curlThis);
 
     // if contains dot, no symbols, not empty, and has no spaces:
     this.fetchCurl(this.state.curlThis);

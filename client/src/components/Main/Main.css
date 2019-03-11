@@ -46,16 +46,16 @@ label {
   padding: 1rem;
   height: 1.5rem;
   justify-content: center;
-  background: rgb(75, 75, 114);
+  background: #4b4b72;
   box-shadow: 1px 6px 10px rgba(0, 0, 0, 0.5);
 }
 
-.output__test {
+.output__info {
   margin: 0;
   padding: 1rem;
   height: 3.5rem;
   justify-content: center;
-  background: rgb(129, 130, 206);
+  background: #8182ce;
   box-shadow: 1px 6px 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -64,7 +64,7 @@ label {
   padding: 1rem;
   height: 1.5rem;
   justify-content: center;
-  background: rgb(177, 136, 83);
+  background: #b18853;
   box-shadow: 1px 6px 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -73,6 +73,6 @@ label {
   padding: 1rem;
   height: 3rem;
   justify-content: center;
-  background: rgb(177, 83, 83);
+  background: #b15353;
   box-shadow: 1px 6px 10px rgba(0, 0, 0, 0.5);
 }
