@@ -8,7 +8,6 @@ class Main extends Component {
     this.state = {
       curlOutput: '',
       curlThis: '',
-      output: '',
       cn: ''
     };
 
@@ -34,33 +33,69 @@ class Main extends Component {
     fetch('http://localhost:5002/curl', options)
       .then(res => res.json())
       .then(json => {
-        this.setState({ cn: 'output__test', curlOutput: json.output });
+        if (json.output === 'alive') {
+          this.setState({
+            cn: 'output__success',
+            curlOutput: "It's still alive!"
+          });
+        } else if (json.output === '') {
+          this.setState({
+            cn: 'output__loading',
+            curlOutput: 'Please enter any URL or IP'
+          });
+        } else if (json.output === '22403') {
+          this.setState({
+            cn: 'output__error',
+            curlOutput: "It's alive, but forbidden. Error: 403"
+          });
+        } else if (json.output === '22404') {
+          this.setState({
+            cn: 'output__error',
+            curlOutput: "Yup, it's dead. Error: 404 Not Found"
+          });
+        } else if (json.output === '22502') {
+          this.setState({
+            cn: 'output__error',
+            curlOutput: "Yup, it's dead. Error: 502 Bad Gateway"
+          });
+        } else if (
+          json.output === '1' ||
+          json.output === '3' ||
+          json.output === '00' ||
+          json.output === '01'
+        ) {
+          this.setState({
+            cn: 'output__error',
+            curlOutput: 'This is not a valid URL.'
+          });
+        } else if (json.output === '3') {
+          this.setState({
+            cn: 'output__error',
+            curlOutput: 'This is not a valid URL.'
+          });
+        } else if (json.output === '6') {
+          this.setState({
+            cn: 'output__error',
+            curlOutput:
+              "Yup, it's pretty dead alright. Error: Could not resolve host"
+          });
+        } else if (json.output === '7') {
+          this.setState({
+            cn: 'output__error',
+            curlOutput: 'Failed to connect. Are you even online?'
+          });
+        } else {
+          this.setState({ cn: 'output__test', curlOutput: json.output });
+        }
       })
-      .catch(err => console.log('Error: ', err));
-
-    // if (json.output === "22") {
-    //   this.setState({
-    //     cn: "output__error",
-    //     curlOutput: "Yup, it's dead. Error: 502 Bad Gateway"
-    //   });
-    // } else if (json.output === "1)") {
-    //   this.setState({
-    //     cn: "output__error",
-    //     curlOutput: "This is not a valid URL"
-    //   });
-    // } else if (json.output === "6)") {
-    //   this.setState({
-    //     cn: "output__error",
-    //     curlOutput: "Yup, it's dead. Error: Could not resolve host"
-    //   });
-    // } else if (json.output === "7)") {
-    //   this.setState({
-    //     cn: "output__error",
-    //     curlOutput: "Failed to connect. Are you even online?"
-    //   });
-    // } else {
-    //   this.setState({ cn: "output__success", curlOutput: json.output });
-    // }
+      .catch(err => {
+        console.log('error', err);
+        this.setState({
+          cn: 'output__error',
+          curlOutput:
+            'Sorry! We appear to be having internal server issues. Please try your query again later.'
+        });
+      });
   };
 
   onChange(e) {
@@ -74,14 +109,15 @@ class Main extends Component {
       curlOutput: 'Checking ' + this.state.curlThis
     });
     console.log('curlOutput:', this.state.curlThis);
-    // const curlThis = this.state.curlThis;
+
+    // if contains dot, no symbols, not empty, and has no spaces:
     this.fetchCurl(this.state.curlThis);
   }
 
   render() {
     return (
       <div className="container">
-        <div className="head">
+        <div>
           <h1>Is it dead..?</h1>
         </div>
         <form onSubmit={this.onSubmit} className="search-form">
@@ -92,11 +128,8 @@ class Main extends Component {
             value={this.state.text}
             onChange={this.onChange}
           />
-          <button className="submit" id="btn">
-            Check
-          </button>
+          <button className="submit btn">Check</button>
         </form>
-
         <h3 className={this.state.cn}>{this.state.curlOutput}</h3>
         <label>
           Check to see whether a website is working by pasting its URL!

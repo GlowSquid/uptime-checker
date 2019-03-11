@@ -24,7 +24,7 @@ h1 {
   border: 3px solid #ffa03c;
 }
 
-#btn {
+.btn {
   color: white;
   font: inherit;
   background: #ffa03c;
@@ -41,9 +41,10 @@ label {
 }
 
 .output__loading {
+  font-size: 16px;
   margin: 0;
   padding: 1rem;
-  height: 3.5rem;
+  height: 1.5rem;
   justify-content: center;
   background: rgb(75, 75, 114);
   box-shadow: 1px 6px 10px rgba(0, 0, 0, 0.5);
@@ -70,7 +71,7 @@ label {
 .output__error {
   margin: 0;
   padding: 1rem;
-  height: 1.5rem;
+  height: 3rem;
   justify-content: center;
   background: rgb(177, 83, 83);
   box-shadow: 1px 6px 10px rgba(0, 0, 0, 0.5);
