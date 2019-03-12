@@ -25,11 +25,17 @@ h1 {
 }
 
 .btn {
-  color: white;
   font: inherit;
+  color: white;
   background: #ffa03c;
   width: 6rem;
+  cursor: pointer;
   border: 3px solid #ffa03c;
+}
+
+.btn:hover,
+.btn:active {
+  background: #ff992c;
 }
 
 label {
