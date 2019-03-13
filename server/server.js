@@ -33,7 +33,11 @@ app.post("/curl", (req, res, next) => {
     return res.status(400).json({ output: errors.curlThis });
   }
 
-  const url = req.body.curlThis;
+  const curlFriendly = /[\-\[\]\{\}\(\)\*\+\?\.\\\^\$\|]/g;
+
+  const url = req.body.curlThis.replace(curlFriendly, "\\$&");
+
+  // const url = req.bodycurlThis
   console.log("Checking: ", url);
 
   Query.updateOne(
@@ -52,8 +56,8 @@ app.post("/curl", (req, res, next) => {
     if (stderr === null || stderr === "") {
       return res.status(200).json({ output: "It's still alive!", error: null });
     } else if (stdout === null || stdout === "") {
-      // return res.status(200).json({ output: stderr });
-      return res.status(200).json({ output: stderr.replace(/\D/g, "") });
+      return res.status(200).json({ output: stderr });
+      // return res.status(200).json({ output: stderr.replace(/\D/g, "") });
     } else {
       return res.status(400).json({ output: null, error: err.message });
     }

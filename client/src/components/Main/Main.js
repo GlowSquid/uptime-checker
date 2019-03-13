@@ -43,7 +43,8 @@ class Main extends Component {
           // Client Errors
         } else if (
           json.output === "This is not a valid URL" ||
-          json.output === "Please enter any URL or IP"
+          json.output === "Please enter any URL or IP" ||
+          json.output === "No Symbols Allowed"
         ) {
           this.setState({
             bgOutput: "output__info",
@@ -51,25 +52,42 @@ class Main extends Component {
             iconOutput: "fas fa-exclamation"
           });
           // temp fix for syntax error
-        } else if (json.output === "00") {
-          this.setState({
-            bgOutput: "output__info",
-            curlOutput: "This is not a valid URL",
-            iconOutput: "fas fa-exclamation"
-          });
+          // } else if (json.output === "00") {
+          //   this.setState({
+          //     bgOutput: "output__info",
+          //     curlOutput: "This is not a valid URL",
+          //     iconOutput: "fas fa-exclamation"
+          //   });
         } else {
           // HTTP & Curl Error Codes
-          if (json.output === "22403") {
+          if (json.output === "22400") {
             this.setState({
-              curlOutput: "It's alive, but forbidden. Error: 403"
+              curlOutput: "Yup, it's dead. Error: 400 Bad Request"
+            });
+          } else if (json.output === "22401") {
+            this.setState({
+              curlOutput: "Yup, it's dead. Error: 401 Unauthorized"
+            });
+          } else if (json.output === "22403") {
+            this.setState({
+              curlOutput: "Yup, it's dead. Error: 403 Forbidden"
             });
           } else if (json.output === "22404") {
             this.setState({
               curlOutput: "Yup, it's dead. Error: 404 Not Found"
             });
+          } else if (json.output === "22405") {
+            this.setState({
+              curlOutput: "Yup, it's dead. Error: 405 Method Not Allowed"
+            });
           } else if (json.output === "22406") {
             this.setState({
               curlOutput: "Yup, it's dead. Error: 406 Not Acceptable"
+            });
+          } else if (json.output === "22407") {
+            this.setState({
+              curlOutput:
+                "Yup, it's dead. Error: 407 Proxy Authentication Required"
             });
           } else if (json.output === "22502") {
             this.setState({
@@ -130,6 +148,7 @@ class Main extends Component {
       iconOutput: ""
     });
     console.log("curlOutput:", this.state.curlThis);
+
     this.fetchCurl(this.state.curlThis);
   }
 
