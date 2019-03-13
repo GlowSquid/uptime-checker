@@ -20,6 +20,12 @@ app.use(express.static(join(__dirname, "bin")));
 
 app.use(cors({ origin: "http://localhost:3000" }));
 
+app.get("/count", (req, res) => {
+  Query.findOne()
+    .then(count => res.status(200).json(count.counter))
+    .catch(err => res.status(404).json(0));
+});
+
 app.post("/curl", (req, res, next) => {
   const { errors, isValid } = validateURLInput(req.body);
 
@@ -37,7 +43,6 @@ app.post("/curl", (req, res, next) => {
     { $inc: { counter: 1 } },
     { upsert: true }
   )
-    // .then(result => result.json())
     .then(result => {
       console.log("Incremented Count");
     })

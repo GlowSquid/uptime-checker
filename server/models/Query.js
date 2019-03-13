@@ -7,4 +7,4 @@ const QuerySchema = new Schema({
   counter: Number
 });
 
-module.exports = mongoose.model("queries", QuerySchema);
+module.exports = mongoose.model("Query", QuerySchema);
