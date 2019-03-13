@@ -50,7 +50,7 @@ app.post("/curl", (req, res, next) => {
 
   exec(join(__dirname, "bin", `curl.sh ${url}`), (err, stdout, stderr) => {
     if (stderr === null || stderr === "") {
-      return res.status(200).json({ output: "alive", error: null });
+      return res.status(200).json({ output: "It's still alive!", error: null });
     } else if (stdout === null || stdout === "") {
       // return res.status(200).json({ output: stderr });
       return res.status(200).json({ output: stderr.replace(/\D/g, "") });

@@ -47,12 +47,23 @@ label {
   font-weight: 300;
 }
 
+.info {
+  margin: 0;
+}
+
+.output__blank {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 1rem;
+  background: transparent;
+  box-shadow: none;
+}
+
 .output__loading {
-  font-size: 16px;
   margin: 0;
   padding: 1rem;
   height: 1.5rem;
-  justify-content: center;
   background: #4b4b72;
   box-shadow: 1px 6px 10px rgba(0, 0, 0, 0.5);
 }
@@ -60,8 +71,7 @@ label {
 .output__info {
   margin: 0;
   padding: 1rem;
-  height: 3.5rem;
-  justify-content: center;
+  height: 1.5rem;
   background: #317be9;
   box-shadow: 1px 6px 10px rgba(0, 0, 0, 0.5);
 }
@@ -70,7 +80,6 @@ label {
   margin: 0;
   padding: 1rem;
   height: 1.5rem;
-  justify-content: center;
   background: #618a32;
   box-shadow: 1px 6px 10px rgba(0, 0, 0, 0.5);
 }
@@ -79,7 +88,6 @@ label {
   margin: 0;
   padding: 1rem;
   height: 3rem;
-  justify-content: center;
   background: #d14848;
   box-shadow: 1px 6px 10px rgba(0, 0, 0, 0.5);
 }
