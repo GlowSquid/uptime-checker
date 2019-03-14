@@ -1,0 +1,26 @@
+.about {
+  padding: 2rem;
+  margin: 3rem auto;
+  width: 40%;
+  background: #4d4d68;
+  border-radius: 30px;
+  border: 1px solid #2c2c3d;
+  box-shadow: 1px 6px 10px rgba(0, 0, 0, 0.5);
+}
+
+.about p {
+  text-align: center;
+  font-size: 18px;
+}
+
+.about a {
+  color: #fff;
+  text-decoration-color: #ffa03c;
+  outline: none;
+  cursor: pointer;
+}
+
+.about a:hover,
+.about a:active {
+  color: #9ba393;
+}

@@ -36,8 +36,6 @@ app.post("/curl", (req, res, next) => {
   const curlFriendly = /[\-\[\]\{\}\(\)\*\+\?\.\\\^\$\|]/g;
 
   const url = req.body.curlThis.replace(curlFriendly, "\\$&");
-
-  // const url = req.bodycurlThis
   console.log("Checking: ", url);
 
   Query.updateOne(

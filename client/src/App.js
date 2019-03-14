@@ -1,18 +1,25 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
+import { BrowserRouter, Route } from "react-router-dom";
 
-// import Header from './components/Header/Header';
-import Main from './components/Main/Main';
-import Footer from './components/Footer/Footer';
+import "./App.css";
+
+import Header from "./components/Header/Header";
+import Main from "./components/Main/Main";
+import Footer from "./components/Footer/Footer";
+
+import AboutPage from "./components/about/About";
 
 class App extends Component {
   render() {
     return (
-      <div>
-        {/* <Header /> */}
-        <Main />
-        <Footer />
-      </div>
+      <BrowserRouter>
+        <div>
+          <Header />
+          <Route exact path="/" component={Main} />
+          <Route path="/about" component={AboutPage} />
+          <Footer />
+        </div>
+      </BrowserRouter>
     );
   }
 }

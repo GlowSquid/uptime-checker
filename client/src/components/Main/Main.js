@@ -7,9 +7,10 @@ class Main extends Component {
     super(props);
     this.state = {
       curlOutput: "",
-      iconOutput: "",
+      icon: "",
       curlThis: "",
-      bgOutput: "output__blank"
+      bg: "output__blank",
+      input: "input"
     };
 
     this.onChange = this.onChange.bind(this);
@@ -36,9 +37,9 @@ class Main extends Component {
       .then(json => {
         if (json.output === "It's still alive!") {
           this.setState({
-            bgOutput: "output__success",
+            bg: "output__success",
             curlOutput: json.output,
-            iconOutput: "fas fa-check"
+            icon: "fas fa-check"
           });
           // Client Errors
         } else if (
@@ -47,16 +48,17 @@ class Main extends Component {
           json.output === "No Symbols Allowed"
         ) {
           this.setState({
-            bgOutput: "output__info",
+            bg: "output__info",
             curlOutput: json.output,
-            iconOutput: "fas fa-exclamation"
+            icon: "fas fa-exclamation",
+            input: "input__error"
           });
           // temp fix for syntax error
           // } else if (json.output === "00") {
           //   this.setState({
-          //     bgOutput: "output__info",
+          //     bg: "output__info",
           //     curlOutput: "This is not a valid URL",
-          //     iconOutput: "fas fa-exclamation"
+          //     icon: "fas fa-exclamation"
           //   });
         } else {
           // HTTP & Curl Error Codes
@@ -120,15 +122,15 @@ class Main extends Component {
             this.setState({ curlOutput: json.output });
           }
           this.setState({
-            bgOutput: "output__error",
-            iconOutput: "fas fa-times"
+            bg: "output__error",
+            icon: "fas fa-times"
           });
         }
       })
       .catch(err => {
         console.log("error", err);
         this.setState({
-          bgOutput: "output__error",
+          bg: "output__error",
           curlOutput:
             "Sorry! We appear to be having internal server issues. Please try your query again later."
         });
@@ -143,9 +145,9 @@ class Main extends Component {
   onSubmit(e) {
     e.preventDefault();
     this.setState({
-      bgOutput: "output__loading",
+      bg: "output__loading",
       curlOutput: "Checking " + this.state.curlThis,
-      iconOutput: ""
+      icon: ""
     });
     console.log("curlOutput:", this.state.curlThis);
 
@@ -155,32 +157,34 @@ class Main extends Component {
   render() {
     return (
       <div className="container">
-        <div>
-          <h1>Is it dead..?</h1>
-        </div>
         <form onSubmit={this.onSubmit} className="search-form">
           <input
             onClick={() => {
               this.setState({
-                bgOutput: "output__blank",
-                iconOutput: "",
-                curlOutput: ""
+                bg: "output__blank",
+                icon: "",
+                curlOutput: "",
+                input: "input"
               });
             }}
-            className="input"
+            className={this.state.input}
             placeholder=" https://www.YourSite.com/"
             type="text"
             value={this.state.text}
             onChange={this.onChange}
           />
-          <button className="submit btn">Check</button>
+          <button className="submit check__btn">Check</button>
+          {/* <button className="submit">Check</button> */}
         </form>
-        <div className={this.state.bgOutput}>
-          <h3 className="info">
-            <i className={this.state.iconOutput} /> {this.state.curlOutput}
-          </h3>
+
+        <div className={this.state.bg}>
+          <h4>
+            <i className={this.state.icon} />
+            {this.state.curlOutput}
+          </h4>
           {/* <h3 className="more__info">Read more..</h3> */}
         </div>
+
         <label>
           Check to see whether a website is working by pasting its URL!
         </label>
