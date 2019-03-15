@@ -1,12 +1,10 @@
 import React from "react";
 
-import { Link } from "react-router-dom";
-
 import "./About.css";
 
 const AboutPage = () => {
   return (
-    <div className="about">
+    <div className="container about">
       <p>
         IsItDead is a free tool to check the uptime of a given location,
         displaying any http-errors it might reveal.
@@ -18,9 +16,15 @@ const AboutPage = () => {
       </p>
       <p>
         This project is free and open source hosted on{" "}
-        <Link to="https://github.com/GlowSquid/IsItDead">GitHub</Link>. If you
-        like it, please give me a star, and feel free to fork it if you want to
-        build on to it.
+        <a
+          href="https://github.com/GlowSquid/IsItDead"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          GitHub
+        </a>
+        . If you like it, please give me a star, and feel free to fork it if you
+        want to build on to it.
       </p>
     </div>
   );

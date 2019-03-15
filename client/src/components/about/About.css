@@ -1,7 +1,7 @@
 .about {
   padding: 2rem;
-  margin: 3rem auto;
-  width: 40%;
+  margin: 2.8rem auto;
+  width: 50%;
   background: #4d4d68;
   border-radius: 30px;
   border: 1px solid #2c2c3d;
@@ -23,4 +23,12 @@
 .about a:hover,
 .about a:active {
   color: #9ba393;
+}
+
+@media screen and (max-width: 767px) {
+  .about {
+    margin: 1.4rem auto;
+    width: 75%;
+    padding: 1rem;
+  }
 }

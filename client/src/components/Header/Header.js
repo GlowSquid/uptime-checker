@@ -16,10 +16,10 @@ const Header = () => {
           <li className="btn">
             <NavLink to="/about">About</NavLink>
           </li>
-          <li className="btn__sign-up">Sign Up</li>
+          {/* <li className="btn__sign-up">Sign Up</li>
           <li className="btn">
             <NavLink to="/login">Login</NavLink>
-          </li>
+          </li> */}
         </ul>
       </nav>
     </header>
