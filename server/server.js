@@ -54,8 +54,26 @@ app.post("/curl", (req, res, next) => {
     if (stderr === null || stderr === "") {
       return res.status(200).json({ output: "It's still alive!", error: null });
     } else if (stdout === null || stdout === "") {
-      return res.status(200).json({ output: stderr });
       // return res.status(200).json({ output: stderr.replace(/\D/g, "") });
+      const curlCode = stderr.substr(5, 5); // retrieve curl status code
+      const trimmedCurlCode = curlCode.replace(/\D/g, ""); // Remove parenthesis
+      const endCode = stderr.replace(/\D/g, ""); // retrieve http status code
+      const trimmedEndCode = endCode.slice(0); // Remove Curl Code from http code
+
+      if (
+        trimmedCurlCode === "35" ||
+        trimmedCurlCode === "60" ||
+        trimmedCurlCode === "6"
+      ) {
+        return res.status(200).json({
+          output: trimmedCurlCode
+        });
+      } else {
+        return res.status(200).json({
+          output: trimmedCurlCode + trimmedEndCode.slice(-3)
+          // output: stderr.replace(/\D/g, "")
+        });
+      }
     } else {
       return res.status(400).json({ output: null, error: err.message });
     }

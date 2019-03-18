@@ -95,31 +95,47 @@ class Main extends Component {
             this.setState({
               curlOutput: "Yup, it's dead. Error: 502 Bad Gateway"
             });
+          } else if (json.output === "60") {
+            this.setState({
+              curlOutput:
+                "This site seems to use an invalid SSL-certificate or SSH md5 fingerprint"
+            });
           } else if (json.output === "6") {
             this.setState({
               curlOutput:
                 "Yup, it's pretty dead alright. Error: Could not resolve host"
             });
-          } else if (json.output === "7") {
-            this.setState({
-              curlOutput: "Failed to connect. Are you even online?"
-            });
-          } else if (json.output === "780") {
+            // } else if (json.output === "7") {
+            //   this.setState({
+            //     curlOutput: "Failed to connect. Are you even online?"
+            //   });
+          } else if (
+            json.output === "780" ||
+            (json.output.startsWith("7") && json.output.endsWith("80"))
+          ) {
             this.setState({
               curlOutput:
                 "Failed to connect. Error: Connection refused on port 80"
             });
-          } else if (json.output === "7443") {
+          } else if (
+            json.output === "7443" ||
+            (json.output.startsWith("7") && json.output.endsWith("443"))
+          ) {
             this.setState({
               curlOutput:
                 "Failed to connect. Error: Connection refused on port 443"
             });
-          } else if (json.output === "60") {
+          } else if (json.output === "35") {
             this.setState({
-              curlOutput: "This site seems to use an invalid SSL-certificate"
+              curlOutput: "A problem occured somewhere in the SSL/TLS handshake"
+            });
+          } else if (json.output === "52") {
+            this.setState({
+              curlOutput:
+                "Nothing was returned. Getting nothing is considered an error"
             });
           } else {
-            this.setState({ curlOutput: json.output });
+            this.setState({ curlOutput: json.output + " | other" });
           }
           this.setState({
             bg: "output__error",

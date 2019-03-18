@@ -6,7 +6,7 @@ const AboutPage = () => {
   return (
     <div className="container about">
       <p>
-        IsItDead is a free tool to check the uptime of a given location,
+        IsItDead is a free tool to check the status of any given URL or IP,
         displaying any http-errors it might reveal.
       </p>
 
@@ -15,7 +15,7 @@ const AboutPage = () => {
         check sites in the backend.
       </p>
       <p>
-        This project is free and open source hosted on{" "}
+        This project is free and open source on{" "}
         <a
           href="https://github.com/GlowSquid/IsItDead"
           rel="noopener noreferrer"
@@ -23,8 +23,7 @@ const AboutPage = () => {
         >
           GitHub
         </a>
-        . If you like it, please give me a star, and feel free to fork it if you
-        want to build on to it.
+        . Star it if you like it, and feel free to fork it.
       </p>
     </div>
   );
