@@ -1,16 +1,16 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import "./Main.css";
+import './Main.css';
 
 class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      curlOutput: "",
-      icon: "",
-      curlThis: "",
-      bg: "output__blank",
-      input: "input"
+      curlOutput: '',
+      icon: '',
+      curlThis: '',
+      bg: 'output__blank',
+      input: 'input'
     };
 
     this.onChange = this.onChange.bind(this);
@@ -27,31 +27,31 @@ class Main extends Component {
 
   fetchCurl = curlThis => {
     const options = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ curlThis })
     };
 
-    fetch("http://localhost:5002/curl", options)
+    fetch('http://localhost:5002/curl', options)
       .then(res => res.json())
       .then(json => {
         if (json.output === "It's still alive!") {
           this.setState({
-            bg: "output__success",
+            bg: 'output__success',
             curlOutput: json.output,
-            icon: "fas fa-check"
+            icon: 'fas fa-check'
           });
           // Client Errors
         } else if (
-          json.output === "This is not a valid URL" ||
-          json.output === "Please enter any URL or IP" ||
-          json.output === "No Symbols Allowed"
+          json.output === 'This is not a valid URL' ||
+          json.output === 'Please enter any URL or IP' ||
+          json.output === 'No Symbols Allowed'
         ) {
           this.setState({
-            bg: "output__info",
+            bg: 'output__info',
             curlOutput: json.output,
-            icon: "fas fa-exclamation",
-            input: "input__error"
+            icon: 'fas fa-exclamation',
+            input: 'input__error'
           });
           // temp fix for syntax error
           // } else if (json.output === "00") {
@@ -62,45 +62,49 @@ class Main extends Component {
           //   });
         } else {
           // HTTP & Curl Error Codes
-          if (json.output === "22400") {
+          if (json.output === '22400') {
             this.setState({
               curlOutput: "Yup, it's dead. Error: 400 Bad Request"
             });
-          } else if (json.output === "22401") {
+          } else if (json.output === '22401') {
             this.setState({
               curlOutput: "Yup, it's dead. Error: 401 Unauthorized"
             });
-          } else if (json.output === "22403") {
+          } else if (json.output === '22403') {
             this.setState({
               curlOutput: "Yup, it's dead. Error: 403 Forbidden"
             });
-          } else if (json.output === "22404") {
+          } else if (json.output === '22404') {
             this.setState({
               curlOutput: "Yup, it's dead. Error: 404 Not Found"
             });
-          } else if (json.output === "22405") {
+          } else if (json.output === '22405') {
             this.setState({
               curlOutput: "Yup, it's dead. Error: 405 Method Not Allowed"
             });
-          } else if (json.output === "22406") {
+          } else if (json.output === '22406') {
             this.setState({
               curlOutput: "Yup, it's dead. Error: 406 Not Acceptable"
             });
-          } else if (json.output === "22407") {
+          } else if (json.output === '22407') {
             this.setState({
               curlOutput:
                 "Yup, it's dead. Error: 407 Proxy Authentication Required"
             });
-          } else if (json.output === "22502") {
+          } else if (json.output === '22500') {
+            this.setState({
+              curlOutput: "Yup, it's dead. Error: 500 Internal Server Error"
+            });
+          } else if (json.output === '22502') {
             this.setState({
               curlOutput: "Yup, it's dead. Error: 502 Bad Gateway"
             });
-          } else if (json.output === "60") {
+          } else if (json.output === '60') {
             this.setState({
               curlOutput:
-                "This site seems to use an invalid SSL-certificate or SSH md5 fingerprint"
+                'This site seems to use an invalid SSL-certificate or SSH md5 fingerprint'
             });
-          } else if (json.output === "6") {
+          } else if (json.output === '6') {
             this.setState({
               curlOutput:
                 "Yup, it's pretty dead alright. Error: Could not resolve host"
@@ -110,45 +114,45 @@ class Main extends Component {
             //     curlOutput: "Failed to connect. Are you even online?"
             //   });
           } else if (
-            json.output === "780" ||
-            (json.output.startsWith("7") && json.output.endsWith("80"))
+            json.output === '780' ||
+            (json.output.startsWith('7') && json.output.endsWith('80'))
           ) {
             this.setState({
               curlOutput:
-                "Failed to connect. Error: Connection refused on port 80"
+                'Failed to connect. Error: Connection refused on port 80'
             });
           } else if (
-            json.output === "7443" ||
-            (json.output.startsWith("7") && json.output.endsWith("443"))
+            json.output === '7443' ||
+            (json.output.startsWith('7') && json.output.endsWith('443'))
           ) {
             this.setState({
               curlOutput:
-                "Failed to connect. Error: Connection refused on port 443"
+                'Failed to connect. Error: Connection refused on port 443'
             });
-          } else if (json.output === "35") {
+          } else if (json.output === '35') {
             this.setState({
-              curlOutput: "A problem occured somewhere in the SSL/TLS handshake"
+              curlOutput: 'A problem occured somewhere in the SSL/TLS handshake'
             });
-          } else if (json.output === "52") {
+          } else if (json.output === '52') {
             this.setState({
               curlOutput:
-                "Nothing was returned. Getting nothing is considered an error"
+                'Nothing was returned. Getting nothing is considered an error'
             });
           } else {
-            this.setState({ curlOutput: json.output + " | other" });
+            this.setState({ curlOutput: json.output + ' | other' });
           }
           this.setState({
-            bg: "output__error",
-            icon: "fas fa-times"
+            bg: 'output__error',
+            icon: 'fas fa-times'
           });
         }
       })
       .catch(err => {
-        console.log("error", err);
+        console.log('error', err);
         this.setState({
-          bg: "output__error",
+          bg: 'output__error',
           curlOutput:
-            "Sorry! We appear to be having internal server issues. Please try your query again later."
+            'Sorry! We appear to be having internal server issues. Please try your query again later.'
         });
       });
   };
@@ -161,11 +165,11 @@ class Main extends Component {
   onSubmit(e) {
     e.preventDefault();
     this.setState({
-      bg: "output__loading",
-      curlOutput: "Checking " + this.state.curlThis,
-      icon: ""
+      bg: 'output__loading',
+      curlOutput: 'Checking ' + this.state.curlThis,
+      icon: ''
     });
-    console.log("curlOutput:", this.state.curlThis);
+    console.log('curlOutput:', this.state.curlThis);
 
     this.fetchCurl(this.state.curlThis);
   }
@@ -177,10 +181,10 @@ class Main extends Component {
           <input
             onClick={() => {
               this.setState({
-                bg: "output__blank",
-                icon: "",
-                curlOutput: "",
-                input: "input"
+                bg: 'output__blank',
+                icon: '',
+                curlOutput: '',
+                input: 'input'
               });
             }}
             className={this.state.input}

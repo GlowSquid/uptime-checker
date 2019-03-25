@@ -24,7 +24,8 @@
   font-weight: 700;
   height: 2.5rem;
   border: 3px solid #ffa03c;
-  /* border: 3px solid #d14848; */
+  border-inline-start-color: #d14848;
+  /* border-inline-start-width: 3px; */
 }
 
 .check__btn {
