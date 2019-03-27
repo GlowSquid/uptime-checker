@@ -18,15 +18,15 @@ app.use(bodyParser.json());
 
 app.use(express.static(join(__dirname, 'bin')));
 
-app.use(cors({ origin: 'http://localhost:3000' }));
+app.use(cors({ origin: 'http://localhost:8081' }));
 
-app.get('/count', (req, res) => {
+app.get('/api/count', (req, res) => {
   Query.findOne()
     .then(count => res.status(200).json(count.counter))
     .catch(err => res.status(404).json(0));
 });
 
-app.post('/curl', (req, res, next) => {
+app.post('/api/curl', (req, res, next) => {
   const { errors, isValid } = validateURLInput(req.body);
 
   if (!isValid) {
@@ -63,6 +63,8 @@ app.post('/curl', (req, res, next) => {
       if (
         trimmedCurlCode === '35' ||
         trimmedCurlCode === '60' ||
+        trimmedCurlCode === '51' ||
+        trimmedCurlCode === '52' ||
         trimmedCurlCode === '6'
       ) {
         return res.status(200).json({
@@ -97,7 +99,7 @@ app.use((req, res, next) => {
 });
 
 // const port = 5002;
-const port = process.env.PORT || 5002;
+const port = process.env.PORT || 5003;
 // app.listen(port);
 
 const db = require('./dbconfig').mongoURI;

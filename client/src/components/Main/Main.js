@@ -32,7 +32,9 @@ class Main extends Component {
       body: JSON.stringify({ curlThis })
     };
 
-    fetch('http://localhost:5002/curl', options)
+    // Switch these two between production & development
+    fetch('http://localhost:5003/api/curl', options)
+      // fetch('https://isitdead.xyz/api/curl', options)
       .then(res => res.json())
       .then(json => {
         if (json.output === "It's still alive!") {
@@ -91,15 +93,112 @@ class Main extends Component {
               curlOutput:
                 "Yup, it's dead. Error: 407 Proxy Authentication Required"
             });
+          } else if (json.output === '22408') {
+            this.setState({
+              curlOutput: "Yup, it's dead. Error: 408 Request Timeout"
+            });
+          } else if (json.output === '22409') {
+            this.setState({
+              curlOutput: "Yup, it's dead. Error: 409 Conflict"
+            });
+          } else if (json.output === '22410') {
+            this.setState({
+              curlOutput: "Yup, it's dead. Error: 410 Gone"
+            });
+          } else if (json.output === '22411') {
+            this.setState({
+              curlOutput: "Yup, it's dead. Error: 411 Length Required"
+            });
+          } else if (json.output === '22412') {
+            this.setState({
+              curlOutput: "Yup, it's dead. Error: 412 Precondition Failed"
+            });
+          } else if (json.output === '22413') {
+            this.setState({
+              curlOutput: "Yup, it's dead. Error: 413 Payload Too Large"
+            });
+          } else if (json.output === '22414') {
+            this.setState({
+              curlOutput: "Yup, it's dead. Error: 414 URI Too Long"
+            });
+          } else if (json.output === '22415') {
+            this.setState({
+              curlOutput: "Yup, it's dead. Error: 415 Unsupported Media Type"
+            });
+          } else if (json.output === '22416') {
+            this.setState({
+              curlOutput: "Yup, it's dead. Error: 416 Range Not Satisfiable"
+            });
+          } else if (json.output === '22417') {
+            this.setState({
+              curlOutput: "Yup, it's dead. Error: 417 Expectation Failed"
+            });
+          } else if (json.output === '22418') {
+            this.setState({
+              curlOutput: "Yup, it's dead. Error: 418 I'm a teapot(?)"
+            });
+          } else if (json.output === '22422') {
+            this.setState({
+              curlOutput: "Yup, it's dead. Error: 422 Unprocessable Entity"
+            });
+          } else if (json.output === '22425') {
+            this.setState({
+              curlOutput: "Yup, it's dead. Error: 425 Too Early"
+            });
+          } else if (json.output === '22426') {
+            this.setState({
+              curlOutput: "Yup, it's dead. Error: 426 Upgrade Required"
+            });
+          } else if (json.output === '22428') {
+            this.setState({
+              curlOutput: "Yup, it's dead. Error: 428 Precondition Required"
+            });
+          } else if (json.output === '22429') {
+            this.setState({
+              curlOutput: "Yup, it's dead. Error: 429 Too Many Requests"
+            });
+          } else if (json.output === '22431') {
+            this.setState({
+              curlOutput:
+                "Yup, it's dead. Error: 431 Request Header Fields Too Large"
+            });
+          } else if (json.output === '22451') {
+            this.setState({
+              curlOutput:
+                "Yup, it's dead. Error: 451 Unavailable For Legal Reasons"
+            });
           } else if (json.output === '22500') {
             this.setState({
               curlOutput: "Yup, it's dead. Error: 500 Internal Server Error"
+            });
+          } else if (json.output === '22501') {
+            this.setState({
+              curlOutput: "Yup, it's dead. Error: 501 Not Implemented"
             });
           } else if (json.output === '22502') {
             this.setState({
               curlOutput: "Yup, it's dead. Error: 502 Bad Gateway"
             });
-          } else if (json.output === '60') {
+          } else if (json.output === '22503') {
+            this.setState({
+              curlOutput: "Yup, it's dead. Error: 503 Service Unavailable"
+            });
+          } else if (json.output === '22504') {
+            this.setState({
+              curlOutput: "Yup, it's dead. Error: 504 Gateway Timeout"
+            });
+          } else if (json.output === '22505') {
+            this.setState({
+              curlOutput:
+                "Yup, it's dead. Error: 505 HTTP Version Not Supported"
+            });
+          } else if (json.output === '22511') {
+            this.setState({
+              curlOutput:
+                "Yup, it's dead. Error: 511 Network Authentication Required"
+            });
+            // Error 51 only in old versions of Curl
+          } else if (json.output === '60' || json.output === '51') {
             this.setState({
               curlOutput:
                 'This site seems to use an invalid SSL-certificate or SSH md5 fingerprint'
@@ -139,7 +238,7 @@ class Main extends Component {
                 'Nothing was returned. Getting nothing is considered an error'
             });
           } else {
-            this.setState({ curlOutput: json.output + ' | other' });
+            this.setState({ curlOutput: json.output + ' | Other error' });
           }
           this.setState({
             bg: 'output__error',
@@ -169,7 +268,7 @@ class Main extends Component {
       curlOutput: 'Checking ' + this.state.curlThis,
       icon: ''
     });
-    console.log('curlOutput:', this.state.curlThis);
+    // console.log('curlOutput:', this.state.curlThis);
 
     this.fetchCurl(this.state.curlThis);
   }

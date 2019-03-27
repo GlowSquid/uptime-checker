@@ -1,5 +1,5 @@
 {
-  "name": "server",
+  "name": "isitdead",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -7,14 +7,17 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon server.js"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GlowSquid/IsItDead.git"
+  },
+  "author": "GlowSquid",
   "license": "ISC",
+  "homepage": "https://isitdead.xyz/",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
-    "eslint": "^5.14.0",
-    "eslint-config-recommended": "^4.0.0",
     "express": "^4.16.4",
     "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.4.13",
@@ -23,6 +26,8 @@
     "validator": "^10.11.0"
   },
   "devDependencies": {
+    "eslint": "^5.14.0",
+    "eslint-config-recommended": "^4.0.0",
     "nodemon": "^1.18.10"
   }
 }
