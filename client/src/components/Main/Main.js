@@ -32,9 +32,10 @@ class Main extends Component {
       body: JSON.stringify({ curlThis })
     };
 
-    // Switch these two between production & development
+    // Switch these between production & development
     fetch('http://localhost:5003/api/curl', options)
-      // fetch('https://isitdead.xyz/api/curl', options)
+      // const thisURL = window.location.href+"api/curl"
+      // fetch(thisURL, options)
       .then(res => res.json())
       .then(json => {
         if (json.output === "It's still alive!") {

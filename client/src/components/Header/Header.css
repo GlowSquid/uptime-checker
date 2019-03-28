@@ -12,7 +12,7 @@
 .logo {
   text-decoration: none;
   font: inherit;
-  font-size: 48px;
+  font-size: 42px;
   color: #ffa03c;
   letter-spacing: 1px;
   font-weight: 800;
@@ -87,6 +87,17 @@
   }
 
   .logo {
-    font-size: 35px;
+    font-size: 32px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .header {
+    margin-top: 1rem;
+    width: 80%;
+  }
+
+  .logo {
+    font-size: 26px;
   }
 }
