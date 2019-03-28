@@ -98,13 +98,11 @@ app.use((req, res, next) => {
   // setTimeout(next, 1000);
 });
 
-// const port = 5002;
 const port = process.env.PORT || 5003;
-// app.listen(port);
 
 const db = require('./dbconfig').mongoURI;
 
 mongoose.connect(db, { useNewUrlParser: true }).then(() => {
-  console.log('db up');
+  console.log('db up on :', port);
   app.listen(port);
 });
