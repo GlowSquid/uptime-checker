@@ -1,11 +1,10 @@
-const Validator = require("validator");
-const isEmpty = require("./is-empty");
-// const isURL = require("./is-url");
+const Validator = require('validator');
+const isEmpty = require('./is-empty');
 
 module.exports = function validateURLInput(data) {
   let errors = {};
 
-  data.curlThis = !isEmpty(data.curlThis) ? data.curlThis : "";
+  data.curlThis = !isEmpty(data.curlThis) ? data.curlThis : '';
 
   if (
     !Validator.isURL(data.curlThis, {
@@ -14,15 +13,11 @@ module.exports = function validateURLInput(data) {
       allow_protocol_relative_urls: false
     })
   ) {
-    errors.curlThis = "This is not a valid URL";
+    errors.curlThis = 'This is not a valid URL';
   }
 
-  // if (!isURL(data.curlThis)) {
-  //   errors.curlThis = "This is not a valid URL";
-  // }
-
   if (Validator.isEmpty(data.curlThis)) {
-    errors.curlThis = "Please enter any URL or IP";
+    errors.curlThis = 'Please enter any URL or IP';
   }
 
   return {
