@@ -15,4 +15,4 @@
 
 Star if you like it, and feel free to fork it.
 
-Remember to `chmod +x server/bin/curl.sh` and insert your own credentials to `server/dbconfigSAMPLE.js`.
+Remember to `chmod 500 server/bin/curl.sh` and insert your own credentials to `server/dbconfigSAMPLE.js`.

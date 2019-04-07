@@ -3,6 +3,7 @@
   margin-top: 3rem;
   width: 50%;
   height: 5rem;
+  display: -webkit-flex;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -26,6 +27,7 @@
 }
 
 .navbar-items ul {
+  display: -webkit-flex;
   display: flex;
   margin: 0;
   padding: 0;

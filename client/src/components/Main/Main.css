@@ -1,5 +1,6 @@
 .search-form {
   /* margin: 0 auto; */
+  display: -webkit-flex;
   display: flex;
   width: 100%;
   /* justify-content: center; */
@@ -7,6 +8,7 @@
   box-shadow: 1px 6px 10px rgba(0, 0, 0, 0.5);
   /* box-sizing: border-box; */
   height: 3rem;
+  /* relative */
 }
 
 .input {
