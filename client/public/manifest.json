@@ -1,6 +1,6 @@
 {
   "short_name": "IsItDead",
-  "name": "IsItDead - Website Pinger",
+  "name": "IsItDead - Website Pinger & Uptime Monitor",
   "icons": [
     {
       "src": "favicon.ico",

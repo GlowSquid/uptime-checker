@@ -264,14 +264,22 @@ class Main extends Component {
 
   onSubmit(e) {
     e.preventDefault();
+    let pickProtocol = this.state.curlThis;
+    if (pickProtocol.startsWith('http://')) {
+      this.fetchCurl(this.state.curlThis);
+    } else if (pickProtocol.startsWith('https://')) {
+      this.fetchCurl(this.state.curlThis);
+    } else {
+      this.fetchCurl('https://' + pickProtocol);
+      pickProtocol = 'https://' + pickProtocol;
+    }
+
     this.setState({
       bg: 'output__loading',
-      curlOutput: 'Checking ' + this.state.curlThis,
+      curlOutput: 'Checking ' + pickProtocol,
       icon: ''
     });
     // console.log('curlOutput:', this.state.curlThis);
-
-    this.fetchCurl(this.state.curlThis);
   }
 
   render() {

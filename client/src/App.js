@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import React, { Component } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 
-import "./App.css";
+import './App.css';
 
-import Header from "./components/Header/Header";
-import Main from "./components/Main/Main";
-import Footer from "./components/Footer/Footer";
+import Header from './components/Header/Header';
+import Main from './components/Main/Main';
+import Footer from './components/Footer/Footer';
 
-import AboutPage from "./components/about/About";
+import AboutPage from './components/about/About';
 
 class App extends Component {
   render() {
@@ -16,7 +16,7 @@ class App extends Component {
         <div>
           <Header />
           <Route exact path="/" component={Main} />
-          <Route path="/about" component={AboutPage} />
+          <Route exact path="/about" component={AboutPage} />
           <Footer />
         </div>
       </BrowserRouter>
