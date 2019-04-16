@@ -265,11 +265,20 @@ class Main extends Component {
   onSubmit(e) {
     e.preventDefault();
     let pickProtocol = this.state.curlThis;
-    if (pickProtocol.startsWith('http://')) {
+
+    // pickProtocol.startsWith('http://') ||
+    // pickProtocol.startsWith('https://')
+    //   ? this.fetchCurl(this.state.curlThis)
+    //   : this.fetchCurl('https://' + pickProtocol);
+
+    if (
+      pickProtocol.startsWith('https://') ||
+      pickProtocol.startsWith('http://')
+    ) {
       this.fetchCurl(this.state.curlThis);
-    } else if (pickProtocol.startsWith('https://')) {
-      this.fetchCurl(this.state.curlThis);
+      console.log('was here');
     } else {
+      console.log('this place');
       this.fetchCurl('https://' + pickProtocol);
       pickProtocol = 'https://' + pickProtocol;
     }
