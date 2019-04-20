@@ -6,3 +6,19 @@ body {
   font-family: "Overpass", "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
+
+.container {
+  padding: 5% 25% 5% 25%;
+  width: 50%;
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    padding: 5%;
+    width: 90%;
+  }
+
+  /* body {
+    background-color: red;
+  } */
+}

@@ -1,0 +1,21 @@
+{
+  "extends": "react",
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "no-console": "off",
+    "react/react-in-jsx-scope": "off",
+    "indent": [
+      "error",
+      2
+    ],
+    "space-before-function-paren": 0
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}

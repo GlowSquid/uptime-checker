@@ -1,0 +1,36 @@
+{
+  "name": "isitdead",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "server:dev": "nodemon server.js",
+    "server:prod": "NODE_ENV=production nodemon server/index.js"
+  },
+  "keywords": [],
+  "author": "GlowSquid",
+  "license": "ISC",
+  "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "isomorphic-unfetch": "^3.0.0",
+    "mongoose": "^5.5.2",
+    "next": "^8.0.4",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "validator": "^10.11.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-config-recommended": "^4.0.0",
+    "eslint-plugin-react": "^7.12.4",
+    "nodemon": "^1.18.11"
+  }
+}
