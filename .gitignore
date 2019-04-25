@@ -1,5 +1,6 @@
 node_modules/
 build/
 .next/
+out/
 *package-lock.json
 dbconfig.js

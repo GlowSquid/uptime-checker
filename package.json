@@ -9,7 +9,8 @@
     "build": "next build",
     "start": "next start",
     "server:dev": "nodemon server.js",
-    "server:prod": "NODE_ENV=production nodemon server/index.js"
+    "server:prod": "NODE_ENV=production nodemon server.js",
+    "export": "next export"
   },
   "keywords": [],
   "author": "GlowSquid",

@@ -13,7 +13,7 @@ export default function About() {
 
         <p>
           The site is made using the MERN-stack with Next.js, and uses Curl
-          through Bash to check sites in the backend.
+          through Bash to check queries in the backend.
         </p>
         <p>
           This project is free and open source on{" "}
