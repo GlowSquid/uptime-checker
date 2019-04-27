@@ -24,7 +24,7 @@ function IndexPage() {
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
         <meta name="theme-color" content="#000000" />
-        <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+        <link rel="manifest" href="/manifest.json" />
         <link
           rel="stylesheet"
           href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"

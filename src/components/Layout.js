@@ -1,6 +1,6 @@
 import Header from "./Header";
 import Footer from "./Footer";
-import Head from "../components/Head";
+import Head from "./Head";
 
 import "../styles/app.css";
 

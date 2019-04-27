@@ -1,6 +1,5 @@
 const express = require("express");
 const next = require("next");
-// const cors = require("cors");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 
@@ -11,10 +10,11 @@ const Query = require("./models/Query");
 const validateURLInput = require("./validation/url");
 
 const dev = process.env.NODE_ENV !== "production";
-const app = next({ dev });
+const app = next({ dir: "src", dev });
 const handle = app.getRequestHandler();
 
-const port = process.env.PORT || 5003;
+const PORT = parseInt(process.env.PORT, 10) || 5003;
+
 const db = require("./dbconfig").mongoURI;
 
 app
@@ -31,7 +31,7 @@ app
     });
 
     const robotsOptions = {
-      root: join(__dirname, "/static"),
+      root: join(__dirname, "./static"),
       headers: {
         "Content-Type": "text/plain;charset=utf-8"
       }
@@ -42,7 +42,7 @@ app
     });
 
     const sitemapOptions = {
-      root: join(__dirname, "/static"),
+      root: join(__dirname, "./static"),
       headers: {
         "Content-Type": "text/xml;charset=UTF-8"
       }
@@ -52,14 +52,21 @@ app
     );
 
     const faviconOptions = {
-      root: join(__dirname, "/static")
+      root: join(__dirname, "./static")
     };
     server.get("/favicon.ico", (req, res) =>
       res.status(200).sendFile("favicon.ico", faviconOptions)
     );
 
+    const manifestOptions = {
+      root: join(__dirname, "./static")
+    };
+    server.get("/manifest.json", (req, res) =>
+      res.status(200).sendFile("manifest.json", manifestOptions)
+    );
+
     const ogpOptions = {
-      root: join(__dirname, "/static")
+      root: join(__dirname, "./static")
     };
     server.get("/ogp.png", (req, res) =>
       res.status(200).sendFile("ogp.png", ogpOptions)
@@ -126,13 +133,13 @@ app
       return handle(req, res);
     });
 
-    server.listen(port, err => {
+    server.listen(PORT, err => {
       if (err) throw err;
-      console.log(`> Server up on :${port}`);
+      console.log(`> Server up on :${PORT}`);
     });
     mongoose.connect(db, { useNewUrlParser: true }).then(() => {
-      console.log(`> DB up on : ${port}`);
-      // server.listen(port);
+      console.log(`> DB up on : ${PORT}`);
+      // server.listen(PORT);
     });
   })
   .catch(ex => {
