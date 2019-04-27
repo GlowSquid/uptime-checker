@@ -9,6 +9,7 @@
 ## Features
 
 - Fully responsive single-page application
+- Server-side rendered with next.js
 - Uses Curl to check for errors, including 4xx and 5xx http status codes
 - Validation to only allow quering URL's and IP's
 - A [counter](https://isitdead.xyz/api/count) increments with each query
