@@ -9,7 +9,8 @@
     "build": "next build src",
     "start": "next start",
     "app:dev": "nodemon server.js",
-    "app:prod": "rm -rf src/.next && next build src && NODE_ENV=production node server.js"
+    "app:prod": "rm -rf src/.next && next build src && NODE_ENV=production node server.js",
+    "app:server": "rm -rf src/.next && next build src && NODE_ENV=production pm2 start server.js"
   },
   "keywords": [],
   "author": "GlowSquid",
@@ -17,7 +18,7 @@
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
     "body-parser": "^1.18.3",
-    "cors": "^2.8.5",
+    "compression": "^1.7.4",
     "express": "^4.16.4",
     "mongoose": "^5.5.2",
     "next": "^8.0.4",

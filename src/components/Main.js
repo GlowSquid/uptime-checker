@@ -27,18 +27,18 @@ export default class Main extends Component {
   // }
 
   fetchCurl(curlThis) {
+    let environment;
+
+    // eslint-disable-next-line no-unused-expressions
+    process.env.NODE_ENV === "development"
+      ? (environment = "http://localhost:5003/api/curl")
+      : (environment = window.location.href + "api/curl");
+
     const options = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ curlThis })
     };
-
-    let environment;
-    {
-      process.env.NODE_ENV === "development"
-        ? (environment = "http://localhost:5003/api/curl")
-        : (environment = window.location.href + "api/curl");
-    }
 
     fetch(environment, options)
       .then(res => res.json())
@@ -61,13 +61,6 @@ export default class Main extends Component {
             icon: "fas fa-exclamation",
             input: "input__error"
           });
-          // temp fix for syntax error
-          // } else if (json.output === "00") {
-          //   this.setState({
-          //     bg: "output__info",
-          //     curlOutput: "This is not a valid URL",
-          //     icon: "fas fa-exclamation"
-          //   });
         } else {
           let msg;
           const yup = "Yup, it's dead. Error: ";
@@ -143,10 +136,6 @@ export default class Main extends Component {
           } else if (json.output === "6") {
             msg =
               "Yup, it's pretty dead alright. Error: Could not resolve host";
-            // } else if (json.output === "7") {
-            //   this.setState({
-            //     curlOutput: "Failed to connect. Are you even online?"
-            //   });
           } else if (
             json.output === "780" ||
             (json.output.startsWith("7") && json.output.endsWith("80"))
@@ -190,11 +179,6 @@ export default class Main extends Component {
   onSubmit(e) {
     e.preventDefault();
     let pickProtocol = this.state.curlThis;
-
-    // pickProtocol.startsWith('http://') ||
-    // pickProtocol.startsWith('https://')
-    //   ? this.fetchCurl(this.state.curlThis)
-    //   : this.fetchCurl('https://' + pickProtocol);
 
     if (
       pickProtocol.startsWith("https://") ||
