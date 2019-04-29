@@ -4,7 +4,6 @@ function IndexPage() {
   return (
     <div>
       <Head>
-        {/* <meta charset="utf-8" /> */}
         <link rel="shortcut icon" href="/favicon.ico" />
         <meta
           name="description"
@@ -26,14 +25,23 @@ function IndexPage() {
         <meta name="theme-color" content="#000000" />
         <link rel="manifest" href="/manifest.json" />
         <link
+          href="https://fonts.googleapis.com/css?family=Overpass:400,700"
           rel="stylesheet"
-          href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+        />
+        <link
+          rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.8.1/css/regular.css"
+          integrity="sha384-FKw7x8fCxuvzBwOJmhTJJsKzBl8dnN9e2R4+pXRfYoHivikuHkzWyhKWDSMcGNK8"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.8.1/css/fontawesome.css"
+          integrity="sha384-vd1e11sR28tEK9YANUtpIOdjGW14pS87bUBuOIoBILVWLFnS+MCX9T6MMf0VdPGq"
           crossOrigin="anonymous"
         />
         <title>IsItDead - Free Website Pinger & Uptime Monitor</title>
       </Head>
-      {/* <p>Hello world!</p> */}
     </div>
   );
 }

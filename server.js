@@ -1,10 +1,10 @@
 const express = require("express");
+const compression = require("compression");
 const next = require("next");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-
 const { exec } = require("child_process");
 const { join } = require("path");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 
 const Query = require("./models/Query");
 const validateURLInput = require("./validation/url");
@@ -21,6 +21,7 @@ app
   .prepare()
   .then(() => {
     const server = express();
+    server.use(compression());
     server.use(bodyParser.json());
     server.use(express.static(join(__dirname, "bin")));
 
