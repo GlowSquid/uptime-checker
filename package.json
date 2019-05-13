@@ -20,6 +20,7 @@
     "body-parser": "^1.18.3",
     "compression": "^1.7.4",
     "express": "^4.16.4",
+    "isomorphic-unfetch": "^3.0.0",
     "mongoose": "^5.5.2",
     "next": "^8.0.4",
     "react": "^16.8.6",

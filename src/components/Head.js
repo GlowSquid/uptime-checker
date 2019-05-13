@@ -30,14 +30,8 @@ function IndexPage() {
         />
         <link
           rel="stylesheet"
-          href="https://use.fontawesome.com/releases/v5.8.1/css/regular.css"
-          integrity="sha384-FKw7x8fCxuvzBwOJmhTJJsKzBl8dnN9e2R4+pXRfYoHivikuHkzWyhKWDSMcGNK8"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="stylesheet"
-          href="https://use.fontawesome.com/releases/v5.8.1/css/fontawesome.css"
-          integrity="sha384-vd1e11sR28tEK9YANUtpIOdjGW14pS87bUBuOIoBILVWLFnS+MCX9T6MMf0VdPGq"
+          href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+          integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
           crossOrigin="anonymous"
         />
         <title>IsItDead - Free Website Pinger & Uptime Monitor</title>
