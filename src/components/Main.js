@@ -1,5 +1,5 @@
 import { Component } from "react";
-// import fetch from "isomorphic-unfetch";
+import fetch from "isomorphic-unfetch";
 
 import "../styles/main.css";
 
@@ -218,7 +218,6 @@ export default class Main extends Component {
             onChange={this.onChange}
           />
           <button className="submit check__btn">Check</button>
-          {/* <button className="submit">Check</button> */}
         </form>
 
         <div className={this.state.bg}>

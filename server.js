@@ -139,8 +139,7 @@ app
       console.log(`> Server up on :${PORT}`);
     });
     mongoose.connect(db, { useNewUrlParser: true }).then(() => {
-      console.log(`> DB up on : ${PORT}`);
-      // server.listen(PORT);
+      console.log("> DB up");
     });
   })
   .catch(ex => {
