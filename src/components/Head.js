@@ -16,7 +16,7 @@ function IndexPage() {
         />
         <meta property="og:url" content="https://isitdead/xyz/" />
         <meta property="og:type" content="Service" />
-        <meta property="og:image" content="ogp.png" />
+        <meta property="og:image" content="https://isitdead/xyz/ogp.png" />
         <meta property="og:image:alt" content="IID Logo" />
         <meta
           name="viewport"
